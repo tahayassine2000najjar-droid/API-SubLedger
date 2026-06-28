@@ -6,7 +6,17 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "test": "jest --detectOpenHandles"
+    "test": "set NODE_ENV=test&& jest --runInBand --detectOpenHandles --forceExit",
+    "test:unit": "set NODE_ENV=test&& jest tests/unit --detectOpenHandles --forceExit",
+    "test:integration": "set NODE_ENV=test&& jest tests/integration --runInBand --detectOpenHandles --forceExit"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testTimeout": 180000,
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/server.js"
+    ]
   },
   "keywords": [],
   "author": "",
